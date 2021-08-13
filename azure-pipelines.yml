@@ -34,7 +34,7 @@ stages:
         echo Show help for NYC
         npx nyc --help
         echo
-        echo install npm
+        echo installing npm
         npm install
         echo
     displayName: 'Initializing'
