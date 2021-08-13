@@ -17,6 +17,10 @@ stages:
   jobs:
   - job: InitJob
     steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+      displayName: 'Install Node.js'
     - script: |
         echo
         echo Initializing $(ApplicationName)
@@ -29,10 +33,10 @@ stages:
         echo
         echo Show help for NYC
         npx nyc --help
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '10.x'
-      displayName: 'Install Node.js'
+        echo
+        echo install npm
+        npm install
+        echo
     displayName: 'Initializing'
 
 
