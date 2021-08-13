@@ -21,12 +21,12 @@ stages:
         echo
         echo Initializing $(ApplicationName)
         echo
-        echo Installing NYC
-        echo
-        npm i -D nyc  
         echo
         echo Installing Node.js
         echo 
+#        echo Installing NYC
+#        echo
+#        npm i -D nyc  
     - task: NodeTool@0
       inputs:
         versionSpec: '10.x'
