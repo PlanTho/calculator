@@ -25,7 +25,7 @@ stages:
         echo Installing Node.js
         echo 
         echo Show NYC version
-        nyc --version 
+        npx nyc --version 
         echo
         echo Show help for NYC
         npx nyc --help
