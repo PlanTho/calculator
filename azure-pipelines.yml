@@ -24,6 +24,9 @@ stages:
         echo
         echo Installing Node.js
         echo 
+        echo Show NYC version
+        nyc --version 
+        echo
         echo Show help for NYC
         npx nyc --help
     - task: NodeTool@0
