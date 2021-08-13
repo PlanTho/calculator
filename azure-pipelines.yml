@@ -17,7 +17,16 @@ stages:
   jobs:
   - job: InitJob
     steps:
-    - script: echo Initializing $(ApplicationName)
+    - script: |
+        echo
+        echo Initializing $(ApplicationName)
+        echo
+        echo Installing NYC
+        echo
+        npm i -D nyc  
+        echo
+        echo Installing Node.js
+        echo 
     - task: NodeTool@0
       inputs:
         versionSpec: '10.x'
