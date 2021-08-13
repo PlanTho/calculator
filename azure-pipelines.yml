@@ -24,6 +24,8 @@ stages:
         echo
         echo Installing Node.js
         echo 
+        echo Show help for NYC
+        npx nyc --help
 #        echo Installing NYC
 #        echo
 #        npm i -D nyc  
