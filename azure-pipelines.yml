@@ -3,19 +3,61 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+variables:
+  ApplicationName: 'Pocket Calculator'
+
 trigger:
 - master
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+stages: 
+- stage: Initialization
+  jobs:
+  - job: InitJob
+    steps:
+    - script: echo Initializing $(ApplicationName)
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+      displayName: 'Install Node.js'
+    displayName: 'Initializing'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+
+- stage: Build
+  jobs:
+  - job: BuildJob
+    steps:
+    - script: |
+        echo Building $(ApplicationName)
+        echo For additional info see https://aka.ms/yaml
+        npm run build
+  displayName: 'Building'
+
+- stage: Test
+  jobs:
+  - job: Test
+    steps:
+    - script: |
+        echo Testing $(ApplicationName)
+        npm test
+    displayName: 'Testing'
+
+- stage: Audit
+  jobs:
+  - job: Audit
+    steps:
+    - script: |
+        echo Auditing $(ApplicationName)
+        npm audit
+    displayName: 'Auditing'
+
+- stage: Deploy
+  jobs:
+  - job: Deploy
+    steps:
+    - script: echo Deploying $(ApplicationName)
+    displayName: 'Deploying'
+
+
