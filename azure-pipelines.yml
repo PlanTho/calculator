@@ -26,9 +26,6 @@ stages:
         echo 
         echo Show help for NYC
         npx nyc --help
-#        echo Installing NYC
-#        echo
-#        npm i -D nyc  
     - task: NodeTool@0
       inputs:
         versionSpec: '10.x'
